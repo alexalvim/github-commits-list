@@ -1,4 +1,4 @@
-import { SEARCH_USER_REQUEST } from '../actions/actionTypes';
+import { SEARCH_USER_REQUEST, SEARCH_USER_SUCCESS } from '../actions/actionTypes';
 
 const initialState = {
   login: ''
@@ -6,8 +6,8 @@ const initialState = {
 
 export default (state = initialState, action) => {
   switch (action.type) {
+    case SEARCH_USER_SUCCESS:
     case SEARCH_USER_REQUEST:
-      return state;
     default:
       return state;
   }

@@ -10,7 +10,7 @@ class UserPage extends React.Component {
       <div>
         Página do usuário
       </div>
-  );
+    );
   }
 }
 

@@ -1,5 +1,16 @@
-import { SEARCH_USER_REQUEST } from './actionTypes';
+import { SEARCH_USER_REQUEST, SEARCH_USER_SUCCESS } from './actionTypes';
 
-export const searchUserRequest = () => ({
+const searchUserRequest = (payload) => ({
   type: SEARCH_USER_REQUEST,
+  payload
+});
+
+const searchUserSuccess = (payload) => ({
+  type: SEARCH_USER_SUCCESS,
+  payload
 })
+
+export {
+  searchUserRequest,
+  searchUserSuccess
+}

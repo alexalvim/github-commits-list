@@ -1,7 +1,8 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-import UserPage from './containers/UserPage';
 import { Provider } from 'react-redux';
+
+import UserPage from './containers/UserPage';
 import { Store } from './store';
 
 ReactDOM.render(
