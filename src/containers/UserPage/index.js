@@ -6,7 +6,7 @@ import Header from '../Header';
 import UserBox from '../../components/UserBox';
 import ContentBox from '../../components/ContentBox';
 import SimpleItem from '../../components/SimpleItem';
-import { searchUserRequest } from '../../actions/user';
+import { searchUserRequest, userRepositoriesRequest } from '../../actions/user';
 import {
   Container,
   ContentHolder,
@@ -15,8 +15,16 @@ import {
 } from './styles';
 
 class UserPage extends React.Component {
+
+  handleClickSeeMore = () => {
+    const { user, userRepositoriesRequest } = this.props;
+    userRepositoriesRequest(user.login, user.avatarUrl, user.repositoriesPage + 1);
+  }
+
   render() {
     const { user } = this.props;
+    const { handleClickSeeMore } = this;
+    console.log(user)
     return (
       <Fragment>
         <Header/>
@@ -30,14 +38,18 @@ class UserPage extends React.Component {
              title='Repositórios'
              wrapperStyles={contentBoxWrapperStyle}>
               <RepositoriesList>
-                {user.repositories.map((repository) =>
-                  <li>
+                {user.repositories &&
+                 user.repositories.length > 0 &&
+                 user.repositories.map((repository) =>
+                  <li key={repository.id}>
                     <SimpleItem
                       title={repository.name}
                       description={repository.description}/>
                   </li>
                 )}
               </RepositoriesList>
+              {user.repositories.length < user.repositoriesCount &&
+                <span onClick={handleClickSeeMore}>ver mais</span>}
             </ContentBox>
           </ContentHolder>
           : <p>Aplicação para verificar os repositórios e commits de usuários do Github. <br/>Use o campo acima para buscar um usuário</p>}
@@ -52,6 +64,6 @@ const mapStateToProps = store => ({
 });
 
 const mapDispatchToProps = dispatch =>
-  bindActionCreators({ searchUserRequest }, dispatch);
+  bindActionCreators({ searchUserRequest, userRepositoriesRequest }, dispatch);
 
 export default connect(mapStateToProps, mapDispatchToProps)(UserPage);

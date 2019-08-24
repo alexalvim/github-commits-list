@@ -2,6 +2,9 @@ import {
   SEARCH_USER_REQUEST,
   SEARCH_USER_SUCCESS,
   SEARCH_USER_FAILURE,
+  GET_USER_REQUEST,
+  GET_USER_SUCCESS,
+  GET_USER_FAILURE,
   USER_REPOSITORIES_REQUEST,
   USER_REPOSITORIES_SUCCESS,
   USER_REPOSITORIES_FAILURE
@@ -21,11 +24,27 @@ const searchUserFailure = () => ({
   type: SEARCH_USER_FAILURE
 });
 
-const userRepositoriesRequest = (login, avatarUrl) => ({
+
+const getUserRequest = (payload) => ({
+  type: GET_USER_REQUEST,
+  payload
+});
+
+const getUserSuccess = (payload) => ({
+  type: GET_USER_SUCCESS,
+  payload
+});
+
+const getUserFailure = () => ({
+  type: GET_USER_FAILURE
+});
+
+const userRepositoriesRequest = (login, avatarUrl, page) => ({
   type: USER_REPOSITORIES_REQUEST,
   payload: {
     login,
-    avatarUrl
+    avatarUrl,
+    page
   }
 });
 
@@ -42,6 +61,9 @@ export {
   searchUserRequest,
   searchUserSuccess,
   searchUserFailure,
+  getUserRequest,
+  getUserSuccess,
+  getUserFailure,
   userRepositoriesRequest,
   userRepositoriesSuccess,
   userRepositoriesFailure

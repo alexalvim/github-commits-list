@@ -5,8 +5,18 @@ import Autocomplete from 'react-autocomplete';
 
 import UserListItem from '../../components/UserListItem'
 import logo from '../../imgs/light-logo.png';
-import { searchUserRequest, userRepositoriesRequest } from '../../actions/user';
-import { ContentWrapper, Container, Logo, autocompleteInputStyle, autocompleteWrapperStyle } from './styles';
+import {
+  searchUserRequest,
+  userRepositoriesRequest,
+  getUserRequest
+} from '../../actions/user';
+import {
+  ContentWrapper,
+  Container,
+  Logo,
+  autocompleteInputStyle,
+  autocompleteWrapperStyle
+} from './styles';
 
 class Header extends React.Component {
   constructor(props) {
@@ -26,11 +36,12 @@ class Header extends React.Component {
   }
 
   handleOnClickUserListItem = (login, avatarUrl) => {
-    const { userRepositoriesRequest } = this.props;
+    const { userRepositoriesRequest, getUserRequest } = this.props;
     this.setState({
       userField: ''
     });
-    userRepositoriesRequest(login, avatarUrl);
+    userRepositoriesRequest(login, avatarUrl, 1);
+    getUserRequest(login);
   }
 
   render() {
@@ -68,6 +79,6 @@ const mapStateToProps = store => ({
 });
 
 const mapDispatchToProps = dispatch =>
-  bindActionCreators({ searchUserRequest, userRepositoriesRequest }, dispatch);
+  bindActionCreators({ searchUserRequest, userRepositoriesRequest, getUserRequest }, dispatch);
 
 export default connect(mapStateToProps, mapDispatchToProps)(Header);

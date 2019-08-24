@@ -6,10 +6,12 @@ const searchUser = (user) =>
   fetch(`${BASE_URL}/search/users?q=${user}&client_id=${CLIENT_ID}&client_secret=${CLIENT_SECRET}`)
     .then(res => res.json());
 
+const getUser = (user) => 
+  fetch(`${BASE_URL}/users/${user}?client_id=${CLIENT_ID}&client_secret=${CLIENT_SECRET}`)
+    .then(res => res.json());
 
-
-const getUserRepositories = (user) => 
-  fetch(`${BASE_URL}/users/${user}/repos?client_id=${CLIENT_ID}&client_secret=${CLIENT_SECRET}`)
+const getUserRepositories = (user, page) => 
+  fetch(`${BASE_URL}/users/${user}/repos?client_id=${CLIENT_ID}&client_secret=${CLIENT_SECRET}&page=${page}`)
     .then(res => res.json());
 
 
@@ -28,6 +30,7 @@ const searchCommit = (user, repo, commit) =>
 
 export {
   searchUser,
+  getUser,
   getUserRepositories,
   getRepositoryCommits,
   searchCommit
