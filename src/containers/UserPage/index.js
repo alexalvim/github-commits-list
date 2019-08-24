@@ -37,19 +37,23 @@ class UserPage extends React.Component {
             <ContentBox
              title='Repositórios'
              wrapperStyles={contentBoxWrapperStyle}>
-              <RepositoriesList>
-                {user.repositories &&
-                 user.repositories.length > 0 &&
-                 user.repositories.map((repository) =>
-                  <li key={repository.id}>
-                    <SimpleItem
-                      title={repository.name}
-                      description={repository.description}/>
-                  </li>
-                )}
-              </RepositoriesList>
-              {user.repositories.length < user.repositoriesCount &&
-                <span onClick={handleClickSeeMore}>ver mais</span>}
+               {user.repositories &&
+                user.repositories.length > 0 ?
+                <Fragment>
+                  <RepositoriesList>
+                    {
+                     user.repositories.map((repository) =>
+                      <li key={repository.id}>
+                        <SimpleItem
+                          title={repository.name}
+                          description={repository.description}/>
+                      </li>
+                    )}
+                  </RepositoriesList>
+                  {user.repositories.length < user.repositoriesCount &&
+                    <span onClick={handleClickSeeMore}>ver mais</span>}
+                </Fragment>
+                : <p>Usuário não possui repositórios</p>}
             </ContentBox>
           </ContentHolder>
           : <p>Aplicação para verificar os repositórios e commits de usuários do Github. <br/>Use o campo acima para buscar um usuário</p>}
