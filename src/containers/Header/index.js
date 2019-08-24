@@ -5,7 +5,7 @@ import Autocomplete from 'react-autocomplete';
 
 import UserListItem from '../../components/UserListItem'
 import logo from '../../imgs/light-logo.png';
-import { searchUserRequest, selectUser } from '../../actions/user';
+import { searchUserRequest, userRepositoriesRequest } from '../../actions/user';
 import { ContentWrapper, Container, Logo, autocompleteInputStyle, autocompleteWrapperStyle } from './styles';
 
 class Header extends React.Component {
@@ -26,11 +26,11 @@ class Header extends React.Component {
   }
 
   handleOnClickUserListItem = (login, avatarUrl) => {
-    const { selectUser } = this.props;
+    const { userRepositoriesRequest } = this.props;
     this.setState({
       userField: ''
     });
-    selectUser(login, avatarUrl);
+    userRepositoriesRequest(login, avatarUrl);
   }
 
   render() {
@@ -53,7 +53,7 @@ class Header extends React.Component {
             }
             value={userField}
             onChange={handleChangeUserInput}
-            inputProps={autocompleteInputStyle}
+            inputProps={{...autocompleteInputStyle, placeholder: 'Digite o usuário a ser buscado'}}
             wrapperStyle={autocompleteWrapperStyle}
             onSelect={(_, user) => handleOnClickUserListItem(user.login, user.avatar_url)}
           />
@@ -68,6 +68,6 @@ const mapStateToProps = store => ({
 });
 
 const mapDispatchToProps = dispatch =>
-  bindActionCreators({ searchUserRequest, selectUser }, dispatch);
+  bindActionCreators({ searchUserRequest, userRepositoriesRequest }, dispatch);
 
 export default connect(mapStateToProps, mapDispatchToProps)(Header);

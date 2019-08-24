@@ -4,5 +4,7 @@ export default {
   double: '16px',
   large: '24px',
 
-  containerMaxWidth: '1000px'
+  containerMaxWidth: '1000px',
+  mobileBreakpoint: '576px',
+  tabletBreakpoint: '768px',
 };

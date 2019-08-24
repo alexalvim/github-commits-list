@@ -29,7 +29,7 @@ const autocompleteInputStyle = {
     fontFamily: 'Arial, Helvetica, sans-serif',
     fontSize: Typo.medium,
     height: '30px',
-    maxWidth: '400px',
+    maxWidth: '300px',
     padding: Spaces.half,
     width: '100%',
   }
