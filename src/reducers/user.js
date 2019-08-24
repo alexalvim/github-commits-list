@@ -5,9 +5,9 @@ import {
   GET_USER_REQUEST,
   GET_USER_SUCCESS,
   GET_USER_FAILURE,
-  USER_REPOSITORIES_REQUEST,
-  USER_REPOSITORIES_SUCCESS,
-  USER_REPOSITORIES_FAILURE
+  GET_USER_REPOSITORIES_REQUEST,
+  GET_USER_REPOSITORIES_SUCCESS,
+  GET_USER_REPOSITORIES_FAILURE
 } from '../actions/actionTypes';
 
 const initialState = {
@@ -32,13 +32,13 @@ export default (state = initialState, action) => {
         ...state,
         repositoriesCount: action.payload.public_repos,
       }
-    case USER_REPOSITORIES_SUCCESS:
+    case GET_USER_REPOSITORIES_SUCCESS:
       return {
         ...state,
         loadingRepositories: false,
         repositories: [...state.repositories, ...action.payload]
       }
-    case USER_REPOSITORIES_REQUEST:
+    case GET_USER_REPOSITORIES_REQUEST:
       const repositories = action.payload.page === 1 ? [] : state.repositories;
       const loadingRepositories = action.payload.page === 1;
       return {
@@ -54,7 +54,7 @@ export default (state = initialState, action) => {
         ...state,
         searchedUsers: []
       } 
-    case USER_REPOSITORIES_FAILURE:
+    case GET_USER_REPOSITORIES_FAILURE:
       return {
         ...state,
         loadingRepositories: false

@@ -7,7 +7,7 @@ import UserListItem from '../../components/UserListItem'
 import logo from '../../imgs/light-logo.png';
 import {
   searchUserRequest,
-  userRepositoriesRequest,
+  getUserRepositoriesRequest,
   getUserRequest
 } from '../../actions/user';
 import {
@@ -38,11 +38,11 @@ class Header extends React.Component {
   }
 
   handleOnClickUserListItem = (login, avatarUrl) => {
-    const { userRepositoriesRequest, getUserRequest } = this.props;
+    const { getUserRepositoriesRequest, getUserRequest } = this.props;
     this.setState({
       userField: ''
     });
-    userRepositoriesRequest(login, avatarUrl, 1);
+    getUserRepositoriesRequest(login, avatarUrl, 1);
     getUserRequest(login);
   }
 
@@ -81,6 +81,6 @@ const mapStateToProps = store => ({
 });
 
 const mapDispatchToProps = dispatch =>
-  bindActionCreators({ searchUserRequest, userRepositoriesRequest, getUserRequest }, dispatch);
+  bindActionCreators({ searchUserRequest, getUserRepositoriesRequest, getUserRequest }, dispatch);
 
 export default connect(mapStateToProps, mapDispatchToProps)(Header);

@@ -5,8 +5,8 @@ import {
   searchUserFailure,
   getUserSuccess,
   getUserFailure,
-  userRepositoriesSuccess,
-  userRepositoriesFailure
+  getUserRepositoriesSuccess,
+  getUserRepositoriesFailure
 } from '../actions/user';
 import {
   searchUser,
@@ -37,10 +37,10 @@ function* asyncGetUser(action) {
 function* asyncUserRepositories(action) {
   try {
     const response = yield call(getUserRepositories, action.payload.login, action.payload.page);
-    yield put(userRepositoriesSuccess(response));
+    yield put(getUserRepositoriesSuccess(response));
   } catch (err) {
     console.log(err);
-    yield put(userRepositoriesFailure);
+    yield put(getUserRepositoriesFailure);
   }
 }
 

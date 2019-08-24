@@ -5,6 +5,7 @@ import Spaces from '../../spaces';
 import Typo from '../../typo';
 
 const ContentWrapper = styled.div`
+  background-color: ${Colors.lightestColor};
   border: solid 1px ${Colors.lightGray};
   border-radius: 5px;
   padding: ${Spaces.double}

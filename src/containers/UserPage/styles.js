@@ -29,6 +29,15 @@ const RepositoriesList = styled.ul`
   }
 `;
 
+const CommitsList = styled.ul`
+  overflow: auto;
+  padding-right: ${Spaces.base};
+
+  > li {
+    word-break: break-all;
+  }
+`;
+
 const contentBoxWrapperStyle = `
   margin-top: ${Spaces.double};
 
@@ -42,5 +51,6 @@ export {
   Container,
   ContentHolder,
   RepositoriesList,
+  CommitsList,
   contentBoxWrapperStyle
 }

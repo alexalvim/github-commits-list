@@ -5,9 +5,9 @@ import {
   GET_USER_REQUEST,
   GET_USER_SUCCESS,
   GET_USER_FAILURE,
-  USER_REPOSITORIES_REQUEST,
-  USER_REPOSITORIES_SUCCESS,
-  USER_REPOSITORIES_FAILURE
+  GET_USER_REPOSITORIES_REQUEST,
+  GET_USER_REPOSITORIES_SUCCESS,
+  GET_USER_REPOSITORIES_FAILURE
 } from './actionTypes';
 
 const searchUserRequest = (payload) => ({
@@ -39,8 +39,8 @@ const getUserFailure = () => ({
   type: GET_USER_FAILURE
 });
 
-const userRepositoriesRequest = (login, avatarUrl, page) => ({
-  type: USER_REPOSITORIES_REQUEST,
+const getUserRepositoriesRequest = (login, avatarUrl, page) => ({
+  type: GET_USER_REPOSITORIES_REQUEST,
   payload: {
     login,
     avatarUrl,
@@ -48,13 +48,13 @@ const userRepositoriesRequest = (login, avatarUrl, page) => ({
   }
 });
 
-const userRepositoriesSuccess = (payload) => ({
-  type: USER_REPOSITORIES_SUCCESS,
+const getUserRepositoriesSuccess = (payload) => ({
+  type: GET_USER_REPOSITORIES_SUCCESS,
   payload
 });
 
-const userRepositoriesFailure = () => ({
-  type: USER_REPOSITORIES_FAILURE
+const getUserRepositoriesFailure = () => ({
+  type: GET_USER_REPOSITORIES_FAILURE
 });
 
 export {
@@ -64,7 +64,7 @@ export {
   getUserRequest,
   getUserSuccess,
   getUserFailure,
-  userRepositoriesRequest,
-  userRepositoriesSuccess,
-  userRepositoriesFailure
+  getUserRepositoriesRequest,
+  getUserRepositoriesSuccess,
+  getUserRepositoriesFailure
 }
