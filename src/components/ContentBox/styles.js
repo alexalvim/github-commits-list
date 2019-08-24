@@ -17,10 +17,21 @@ const ContentWrapper = styled.div`
 const Title = styled.h2`
   color: ${Colors.darkestColor};
   font-size: ${Typo.large};
-  margin-bottom: ${Spaces.double};
+`;
+
+const TitleContainer = styled.div`
+  align-items: center;
+  display:flex;
+  margin-bottom: ${Spaces.base};
+`;
+
+const RightContentContainer = styled.div`
+  margin-left: auto;
 `;
 
 export {
   ContentWrapper,
-  Title
+  Title,
+  TitleContainer,
+  RightContentContainer
 }

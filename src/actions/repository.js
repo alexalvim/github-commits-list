@@ -1,7 +1,8 @@
 import {
   GET_REPOSITORY_COMMITS_REQUEST,
   GET_REPOSITORY_COMMITS_SUCCESS,
-  GET_REPOSITORY_COMMITS_FAILURE
+  GET_REPOSITORY_COMMITS_FAILURE,
+  CLEAR_REPOSITORY
 } from '../actions/actionTypes' 
 
 
@@ -22,8 +23,13 @@ const getRepositoryCommitsFailure = () => ({
   type: GET_REPOSITORY_COMMITS_FAILURE
 });
 
+const clearRepository = () => ({
+  type: CLEAR_REPOSITORY
+});
+
 export {
   getRepositoryCommitsRequest,
   getRepositoryCommitsSuccess,
-  getRepositoryCommitsFailure
+  getRepositoryCommitsFailure,
+  clearRepository
 }

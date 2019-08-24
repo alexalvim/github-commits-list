@@ -9,7 +9,7 @@ import ContentBox from '../../components/ContentBox';
 import SimpleItem from '../../components/SimpleItem';
 import ModalBox from '../../components/ModalBox';
 import { searchUserRequest, getUserRepositoriesRequest } from '../../actions/user';
-import { getRepositoryCommitsRequest } from '../../actions/repository';
+import { getRepositoryCommitsRequest, clearRepository } from '../../actions/repository';
 import {
   Container,
   ContentHolder,
@@ -40,6 +40,8 @@ class UserPage extends React.Component {
   }
 
   handleCloseModalRepository = (evt) => {
+    const { clearRepository } = this.props;
+    clearRepository();
     this.setState({
       openRepositoryModal: false
     })
@@ -99,8 +101,8 @@ class UserPage extends React.Component {
               {repository.commits.map((commit) => 
                 <li key={commit.sha}>
                   <SimpleItem
-                    title={commit.sha}
-                    description={commit.commit.message}/>
+                    title={commit.commit.message}
+                    description={commit.sha}/>
                 </li>)}
             </CommitsList>
         </ModalBox>
@@ -118,7 +120,8 @@ const mapDispatchToProps = dispatch =>
   bindActionCreators({
     searchUserRequest,
     getUserRepositoriesRequest,
-    getRepositoryCommitsRequest
+    getRepositoryCommitsRequest,
+    clearRepository
   }, dispatch);
 
 export default connect(mapStateToProps, mapDispatchToProps)(UserPage);

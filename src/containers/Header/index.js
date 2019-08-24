@@ -37,7 +37,7 @@ class Header extends React.Component {
     }
   }
 
-  handleOnClickUserListItem = (login, avatarUrl) => {
+  handleOnClickUserListItem = (login, avatarUrl, evt) => {
     const { getUserRepositoriesRequest, getUserRequest } = this.props;
     this.setState({
       userField: ''

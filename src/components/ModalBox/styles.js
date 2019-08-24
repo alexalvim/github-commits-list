@@ -15,6 +15,12 @@ const OverlayWrapper = styled.div`
   width: 100%;
 `;
 
+const CloseButton = styled.button`
+  border: none;
+  cursor: pointer;
+  padding: ${Spaces.half};
+`;
+
 const contentBoxWrapperStyle = `
   display: flex;
   flex-direction: column;
@@ -28,5 +34,6 @@ const contentBoxWrapperStyle = `
 
 export {
   OverlayWrapper,
+  CloseButton,
   contentBoxWrapperStyle
 }

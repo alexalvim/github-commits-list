@@ -6,6 +6,7 @@ import Spaces from '../../spaces';
 
 const Title = styled.h3`
   color: ${Colors.mainColor};
+  display: inline-block;
   font-size: ${Typo.medium};
   font-weight: bold;
   margin-bottom: ${Spaces.half};

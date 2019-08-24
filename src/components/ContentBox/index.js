@@ -1,10 +1,13 @@
 import React from 'react';
 
-import { ContentWrapper, Title } from './styles';
+import { ContentWrapper, Title, TitleContainer, RightContentContainer } from './styles';
 
-export default ({ title, wrapperStyles, onClick, children }) => (
+export default ({ title, wrapperStyles, rightContent, children }) => (
   <ContentWrapper wrapperStyles={wrapperStyles}>
-    <Title>{title}</Title>
+    <TitleContainer>
+      <Title>{title}</Title>
+      {rightContent && <RightContentContainer>{rightContent}</RightContentContainer>}
+    </TitleContainer>
     {children}
   </ContentWrapper>
 )
