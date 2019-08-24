@@ -16,7 +16,8 @@ const initialState = {
   avatarUrl: '',
   repositories: [],
   repositoriesPage: 1,
-  repositoriesCount: 0
+  repositoriesCount: 0,
+  loadingRepositories: false
 };
 
 export default (state = initialState, action) => {
@@ -34,13 +35,16 @@ export default (state = initialState, action) => {
     case USER_REPOSITORIES_SUCCESS:
       return {
         ...state,
+        loadingRepositories: false,
         repositories: [...state.repositories, ...action.payload]
       }
     case USER_REPOSITORIES_REQUEST:
       const repositories = action.payload.page === 1 ? [] : state.repositories;
+      const loadingRepositories = action.payload.page === 1;
       return {
         ...state,
         repositories,
+        loadingRepositories,
         login: action.payload.login,
         avatarUrl: action.payload.avatarUrl,
         repositoriesPage: action.payload.page
@@ -50,9 +54,13 @@ export default (state = initialState, action) => {
         ...state,
         searchedUsers: []
       } 
+    case USER_REPOSITORIES_FAILURE:
+      return {
+        ...state,
+        loadingRepositories: false
+      }
     case SEARCH_USER_REQUEST:
     case GET_USER_FAILURE:
-    case USER_REPOSITORIES_FAILURE:
     case SEARCH_USER_FAILURE:
     default:
       return state;

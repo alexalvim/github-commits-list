@@ -29,10 +29,12 @@ class Header extends React.Component {
   handleChangeUserInput = (evt) => {
     const { searchUserRequest } = this.props;
     const user = evt.currentTarget.value;
-    searchUserRequest(user);
     this.setState({
       userField: user
     });
+    if(user.length > 0) {
+      searchUserRequest(user);
+    }
   }
 
   handleOnClickUserListItem = (login, avatarUrl) => {

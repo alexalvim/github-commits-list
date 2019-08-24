@@ -18,6 +18,7 @@ const Title = styled.h3`
 
 const Description = styled.p`
   font-size: ${Typo.medium};
+  word-break: break-all;
 `;
 
 const ContentWrapper = styled.div`
