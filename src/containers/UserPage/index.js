@@ -15,6 +15,7 @@ import {
   ContentHolder,
   RepositoriesList,
   CommitsList,
+  CommitsListWrapper,
   contentBoxWrapperStyle
 } from './styles';
 
@@ -31,9 +32,15 @@ class UserPage extends React.Component {
     getUserRepositoriesRequest(user.login, user.avatarUrl, user.repositoriesPage + 1);
   }
 
+
+  handleSeeMoreCommits = () => {
+    const { user, repository, getRepositoryCommitsRequest } = this.props;
+    getRepositoryCommitsRequest(user.login, repository.name, repository.commitsPage + 1);
+  }
+
   handleOnClickRepository = (repositoryName) => {
     const { user, getRepositoryCommitsRequest } = this.props;
-    getRepositoryCommitsRequest(user.login, repositoryName)
+    getRepositoryCommitsRequest(user.login, repositoryName, 1)
     this.setState({
       openRepositoryModal: true
     })
@@ -53,7 +60,8 @@ class UserPage extends React.Component {
     const {
       handleSeeMoreRepositories,
       handleOnClickRepository,
-      handleCloseModalRepository
+      handleCloseModalRepository,
+      handleSeeMoreCommits
     } = this;
     return (
       <Fragment>
@@ -97,14 +105,23 @@ class UserPage extends React.Component {
           title={repository.name}
           isOpen={openRepositoryModal}
           closeModal={handleCloseModalRepository}>
-            <CommitsList>
-              {repository.commits.map((commit) => 
-                <li key={commit.sha}>
-                  <SimpleItem
-                    title={commit.commit.message}
-                    description={commit.sha}/>
-                </li>)}
-            </CommitsList>
+          <CommitsListWrapper id='commits-list-wrapper'>
+            <InfiniteScroll
+              scrollableTarget='commits-list-wrapper'
+              dataLength={repository.commits.length}
+              next={handleSeeMoreCommits}
+              hasMore={repository.hasNextPage}
+              loader={<span>Carregando Commits...</span>}>
+              <CommitsList>
+                {repository.commits.map((commit) => 
+                  <li key={commit.sha}>
+                    <SimpleItem
+                      title={commit.commit.message}
+                      description={commit.sha}/>
+                  </li>)}
+              </CommitsList>
+            </InfiniteScroll>
+          </CommitsListWrapper>
         </ModalBox>
       </Fragment>
     );

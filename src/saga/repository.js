@@ -11,7 +11,11 @@ import {
 
 function* asyncGetRepositoryCommits(action) {
   try {
-    const response = yield call(getRepositoryCommits, action.payload.login, action.payload.repository);
+    const response = yield call(
+      getRepositoryCommits,
+      action.payload.login,
+      action.payload.repository,
+      action.payload.page);
     yield put(getRepositoryCommitsSuccess(response));
   } catch (err) {
     console.log(err);

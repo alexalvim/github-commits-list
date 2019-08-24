@@ -30,12 +30,15 @@ const RepositoriesList = styled.ul`
 `;
 
 const CommitsList = styled.ul`
-  overflow: auto;
   padding-right: ${Spaces.base};
 
   > li {
     word-break: break-all;
   }
+`;
+
+const CommitsListWrapper= styled.div`
+  overflow: auto;
 `;
 
 const contentBoxWrapperStyle = `
@@ -52,5 +55,6 @@ export {
   ContentHolder,
   RepositoriesList,
   CommitsList,
+  CommitsListWrapper,
   contentBoxWrapperStyle
 }

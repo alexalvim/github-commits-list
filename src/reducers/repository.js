@@ -5,9 +5,13 @@ import {
   CLEAR_REPOSITORY
 } from '../actions/actionTypes' 
 
+import { COMMITS_PER_PAGE } from '../api/github'
+
 const initialState = {
   name: '',
-  commits: [] 
+  commits: [] ,
+  commitsPage: 1,
+  hasNextPage: false
 }
 
 export default (state = initialState, action) => {
@@ -15,12 +19,15 @@ export default (state = initialState, action) => {
     case GET_REPOSITORY_COMMITS_REQUEST:
       return {
         ...state,
+        commitsPage: action.payload.page,
         name: action.payload.repository
       };
     case GET_REPOSITORY_COMMITS_SUCCESS:
+      const hasNextPage = COMMITS_PER_PAGE === action.payload.length;
       return {
         ...state,
-        commits: action.payload
+        hasNextPage,
+        commits: [...state.commits, ...action.payload]
       };
     case CLEAR_REPOSITORY:
       return initialState;

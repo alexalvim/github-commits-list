@@ -6,11 +6,12 @@ import {
 } from '../actions/actionTypes' 
 
 
-const getRepositoryCommitsRequest = (login, repository) => ({
+const getRepositoryCommitsRequest = (login, repository, page) => ({
   type: GET_REPOSITORY_COMMITS_REQUEST,
   payload: {
     login,
-    repository
+    repository,
+    page
   }
 });
 
