@@ -33,7 +33,7 @@ function* asyncSearchCommit(action) {
       searchCommit,
       action.payload.login,
       action.payload.repository,
-      action.payload.commit
+      action.payload.term
     );
     yield put(searchCommitSuccess(response));
   } catch (err) {

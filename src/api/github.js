@@ -20,8 +20,8 @@ const getRepositoryCommits = (user, repo, page) =>
   fetch(`${BASE_URL}/repos/${user}/${repo}/commits?client_id=${CLIENT_ID}&client_secret=${CLIENT_SECRET}&per_page=${COMMITS_PER_PAGE}&page=${page}`)
     .then(res => res.json());
 
-const searchCommit = (login, repo, commit) =>
-  fetch(`${BASE_URL}/search/commits?q=repo:${login}/${repo}+${commit}&client_id=${CLIENT_ID}&client_secret=${CLIENT_SECRET}`,
+const searchCommit = (login, repo, term) =>
+  fetch(`${BASE_URL}/search/commits?q=repo:${login}/${repo}+${term}&client_id=${CLIENT_ID}&client_secret=${CLIENT_SECRET}`,
     {
       headers: new Headers({
           "Accept": "application/vnd.github.cloak-preview",

@@ -8,7 +8,6 @@ import {
   CLEAR_REPOSITORY
 } from '../actions/actionTypes' 
 
-
 const getRepositoryCommitsRequest = (login, repository, page) => ({
   type: GET_REPOSITORY_COMMITS_REQUEST,
   payload: {
@@ -28,12 +27,12 @@ const getRepositoryCommitsFailure = (payload) => ({
   payload
 });
 
-const searchCommitRequest = (login, repository, commit) => ({
+const searchCommitRequest = (login, repository, term) => ({
   type: SEARCH_COMMIT_REQUEST,
   payload: {
     login,
     repository,
-    commit
+    term
   }
 });
 

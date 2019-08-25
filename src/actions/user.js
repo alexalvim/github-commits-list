@@ -25,7 +25,6 @@ const searchUserFailure = (payload) => ({
   payload
 });
 
-
 const getUserRequest = (payload) => ({
   type: GET_USER_REQUEST,
   payload
