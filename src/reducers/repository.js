@@ -2,6 +2,7 @@ import {
   GET_REPOSITORY_COMMITS_REQUEST,
   GET_REPOSITORY_COMMITS_SUCCESS,
   GET_REPOSITORY_COMMITS_FAILURE,
+  SEARCH_COMMIT_REQUEST,
   SEARCH_COMMIT_SUCCESS,
   SEARCH_COMMIT_FAILURE,
   CLEAR_REPOSITORY,
@@ -29,6 +30,11 @@ export default (state = initialState, action) => {
         commitsPage: action.payload.page,
         name: action.payload.repository
       };
+    case SEARCH_COMMIT_REQUEST:
+      return {
+        ...state,
+        isLoadingCommits: true,
+      }
     case GET_REPOSITORY_COMMITS_SUCCESS:
       const hasNextPage = COMMITS_PER_PAGE === action.payload.length;
       const commits = state.commitsPage === 1 ? action.payload : [...state.commits, ...action.payload];
@@ -42,7 +48,8 @@ export default (state = initialState, action) => {
       return {
         ...state,
         commits: action.payload.items,
-        commitsPage: 1
+        commitsPage: 1,
+        isLoadingCommits: false
       };
     case GET_REPOSITORY_COMMITS_FAILURE:
       return {
@@ -53,6 +60,7 @@ export default (state = initialState, action) => {
     case SEARCH_COMMIT_FAILURE:
       return {
         ...state,
+        isLoadingCommits: false,
         errorMessage: action.payload
       };
     case CLEAR_ERROR_MESSAGE:

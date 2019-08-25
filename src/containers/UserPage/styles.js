@@ -29,24 +29,6 @@ const RepositoriesList = styled.ul`
   }
 `;
 
-const CommitsList = styled.ul`
-  padding-right: ${Spaces.base};
-
-  > li {
-    word-break: break-all;
-  }
-`;
-
-const CommitsListWrapper= styled.div`
-  margin-top: ${Spaces.base};
-  overflow: auto;
-`;
-
-const CommitsForm = styled.form`
-  display: flex;
-  margin-bottom: ${Spaces.base};
-`;
-
 const contentBoxWrapperStyle = `
   margin-top: ${Spaces.double};
 
@@ -56,24 +38,9 @@ const contentBoxWrapperStyle = `
   }
 `;
 
-const commitTextFieldStyle = `
-  margin-right: ${Spaces.half};
-  width: 100%;
-`;
-
-
-const clearFilterButtonStyle = `
-  align-self: center;
-`;
-
 export {
   Container,
   ContentHolder,
   RepositoriesList,
-  CommitsList,
-  CommitsListWrapper,
-  CommitsForm,
-  contentBoxWrapperStyle,
-  commitTextFieldStyle,
-  clearFilterButtonStyle
+  contentBoxWrapperStyle
 }
