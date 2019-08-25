@@ -20,8 +20,9 @@ const getRepositoryCommitsSuccess = (payload) => ({
   payload
 });
 
-const getRepositoryCommitsFailure = () => ({
-  type: GET_REPOSITORY_COMMITS_FAILURE
+const getRepositoryCommitsFailure = (payload) => ({
+  type: GET_REPOSITORY_COMMITS_FAILURE,
+  payload
 });
 
 const clearRepository = () => ({

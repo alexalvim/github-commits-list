@@ -16,9 +16,9 @@ const OverlayWrapper = styled.div`
 `;
 
 const CloseButton = styled.button`
+  background: none;
   border: none;
   cursor: pointer;
-  padding: ${Spaces.half};
 `;
 
 const contentBoxWrapperStyle = `
@@ -27,6 +27,7 @@ const contentBoxWrapperStyle = `
   height: 100%;
 
   @media (min-width: ${Spaces.mobileBreakpoint}) {
+    height: auto;
     max-height: 550px;
     max-width: 450px;
   }

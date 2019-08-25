@@ -8,8 +8,10 @@ import UserBox from '../../components/UserBox';
 import ContentBox from '../../components/ContentBox';
 import SimpleItem from '../../components/SimpleItem';
 import ModalBox from '../../components/ModalBox';
+import ModalError from '../../components/ModalError';
 import { searchUserRequest, getUserRepositoriesRequest } from '../../actions/user';
 import { getRepositoryCommitsRequest, clearRepository } from '../../actions/repository';
+import { clearErrorMessage } from '../../actions/common';
 import {
   Container,
   ContentHolder,
@@ -46,12 +48,17 @@ class UserPage extends React.Component {
     })
   }
 
-  handleCloseModalRepository = (evt) => {
+  handleCloseModalRepository = () => {
     const { clearRepository } = this.props;
     clearRepository();
     this.setState({
       openRepositoryModal: false
     })
+  }
+
+  handleCloseModalError = () => {
+    const { clearErrorMessage } = this.props;
+    clearErrorMessage();
   }
 
   render() {
@@ -61,7 +68,8 @@ class UserPage extends React.Component {
       handleSeeMoreRepositories,
       handleOnClickRepository,
       handleCloseModalRepository,
-      handleSeeMoreCommits
+      handleSeeMoreCommits,
+      handleCloseModalError
     } = this;
     return (
       <Fragment>
@@ -103,7 +111,7 @@ class UserPage extends React.Component {
         </Container>
         <ModalBox
           title={repository.name}
-          isOpen={openRepositoryModal}
+          isOpen={!user.errorMessage && !repository.errorMessage && openRepositoryModal}
           closeModal={handleCloseModalRepository}>
           <CommitsListWrapper id='commits-list-wrapper'>
             <InfiniteScroll
@@ -112,17 +120,24 @@ class UserPage extends React.Component {
               next={handleSeeMoreCommits}
               hasMore={repository.hasNextPage}
               loader={<span>Carregando Commits...</span>}>
-              <CommitsList>
-                {repository.commits.map((commit) => 
-                  <li key={commit.sha}>
-                    <SimpleItem
-                      title={commit.commit.message}
-                      description={commit.sha}/>
-                  </li>)}
-              </CommitsList>
+              {repository.isLoadingCommits ?
+                <span>Carregando Commits...</span>:
+                <CommitsList>
+                  {repository.commits.map((commit) => 
+                    <li key={commit.sha}>
+                     <SimpleItem
+                       title={commit.commit.message}
+                       description={commit.sha}/>
+                    </li>)}
+                </CommitsList>
+              }
             </InfiniteScroll>
           </CommitsListWrapper>
         </ModalBox>
+        <ModalError
+          errorMessage={user.errorMessage || repository.errorMessage}
+          isOpen={user.errorMessage || repository.errorMessage}
+          closeModal={handleCloseModalError}/>
       </Fragment>
     );
   }
@@ -138,7 +153,8 @@ const mapDispatchToProps = dispatch =>
     searchUserRequest,
     getUserRepositoriesRequest,
     getRepositoryCommitsRequest,
-    clearRepository
+    clearRepository,
+    clearErrorMessage
   }, dispatch);
 
 export default connect(mapStateToProps, mapDispatchToProps)(UserPage);

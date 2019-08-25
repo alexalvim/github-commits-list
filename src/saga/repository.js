@@ -19,7 +19,7 @@ function* asyncGetRepositoryCommits(action) {
     yield put(getRepositoryCommitsSuccess(response));
   } catch (err) {
     console.log(err);
-    yield put(getRepositoryCommitsFailure);
+    yield put(getRepositoryCommitsFailure(err));
   }
 }
 

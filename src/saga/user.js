@@ -20,7 +20,7 @@ function* asyncSearchUser(action) {
     yield put(searchUserSuccess(response));
   } catch (err) {
     console.log(err);
-    yield put(searchUserFailure);
+    yield put(searchUserFailure(err));
   }
 }
 
@@ -30,7 +30,7 @@ function* asyncGetUser(action) {
     yield put(getUserSuccess(response));
   } catch (err) {
     console.log(err);
-    yield put(getUserFailure);
+    yield put(getUserFailure(err));
   }
 }
 
@@ -40,7 +40,7 @@ function* asyncUserRepositories(action) {
     yield put(getUserRepositoriesSuccess(response));
   } catch (err) {
     console.log(err);
-    yield put(getUserRepositoriesFailure);
+    yield put(getUserRepositoriesFailure(err));
   }
 }
 

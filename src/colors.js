@@ -5,5 +5,6 @@ export default {
   darkestColor: '#24292e',
   lightestColor: '#fff',
   mainColor: '#1074e7',
-  overlayColor: '#24292e60'
+  overlayColor: '#24292e60',
+  errorRed: '#e34b26'
 }

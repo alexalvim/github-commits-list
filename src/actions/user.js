@@ -7,7 +7,7 @@ import {
   GET_USER_FAILURE,
   GET_USER_REPOSITORIES_REQUEST,
   GET_USER_REPOSITORIES_SUCCESS,
-  GET_USER_REPOSITORIES_FAILURE
+  GET_USER_REPOSITORIES_FAILURE,
 } from './actionTypes';
 
 const searchUserRequest = (payload) => ({
@@ -20,8 +20,9 @@ const searchUserSuccess = (payload) => ({
   payload
 });
 
-const searchUserFailure = () => ({
-  type: SEARCH_USER_FAILURE
+const searchUserFailure = (payload) => ({
+  type: SEARCH_USER_FAILURE,
+  payload
 });
 
 
@@ -35,8 +36,9 @@ const getUserSuccess = (payload) => ({
   payload
 });
 
-const getUserFailure = () => ({
-  type: GET_USER_FAILURE
+const getUserFailure = (payload) => ({
+  type: GET_USER_FAILURE,
+  payload
 });
 
 const getUserRepositoriesRequest = (login, avatarUrl, page) => ({
@@ -53,8 +55,9 @@ const getUserRepositoriesSuccess = (payload) => ({
   payload
 });
 
-const getUserRepositoriesFailure = () => ({
-  type: GET_USER_REPOSITORIES_FAILURE
+const getUserRepositoriesFailure = (payload) => ({
+  type: GET_USER_REPOSITORIES_FAILURE,
+  payload
 });
 
 export {
@@ -66,5 +69,5 @@ export {
   getUserFailure,
   getUserRepositoriesRequest,
   getUserRepositoriesSuccess,
-  getUserRepositoriesFailure
+  getUserRepositoriesFailure,
 }
