@@ -26,7 +26,7 @@ class Header extends React.Component {
     }
   }
 
-  handleChangeUserInput = (evt) => {
+  handleChangeUserField = (evt) => {
     const { searchUserRequest } = this.props;
     const user = evt.currentTarget.value;
     this.setState({
@@ -49,7 +49,7 @@ class Header extends React.Component {
   render() {
     const { searchedUsers } = this.props;
     const { userField } = this.state;
-    const { handleChangeUserInput, handleOnClickUserListItem } = this;
+    const { handleChangeUserField, handleOnClickUserListItem } = this;
     return (
       <ContentWrapper>
         <Container>
@@ -65,7 +65,7 @@ class Header extends React.Component {
               </div>
             }
             value={userField}
-            onChange={handleChangeUserInput}
+            onChange={handleChangeUserField}
             inputProps={{...autocompleteInputStyle, placeholder: 'Digite o usuário a ser buscado'}}
             wrapperStyle={autocompleteWrapperStyle}
             onSelect={(_, user) => handleOnClickUserListItem(user.login, user.avatar_url)}

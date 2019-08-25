@@ -38,7 +38,13 @@ const CommitsList = styled.ul`
 `;
 
 const CommitsListWrapper= styled.div`
+  margin-top: ${Spaces.base};
   overflow: auto;
+`;
+
+const CommitsForm = styled.form`
+  display: flex;
+  margin-bottom: ${Spaces.base};
 `;
 
 const contentBoxWrapperStyle = `
@@ -50,11 +56,24 @@ const contentBoxWrapperStyle = `
   }
 `;
 
+const commitTextFieldStyle = `
+  margin-right: ${Spaces.half};
+  width: 100%;
+`;
+
+
+const clearFilterButtonStyle = `
+  align-self: center;
+`;
+
 export {
   Container,
   ContentHolder,
   RepositoriesList,
   CommitsList,
   CommitsListWrapper,
-  contentBoxWrapperStyle
+  CommitsForm,
+  contentBoxWrapperStyle,
+  commitTextFieldStyle,
+  clearFilterButtonStyle
 }

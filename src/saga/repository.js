@@ -1,12 +1,15 @@
 import { call, put } from 'redux-saga/effects';
 
 import {
-  getRepositoryCommits
+  getRepositoryCommits,
+  searchCommit
 } from '../api/github';
 
 import {
   getRepositoryCommitsSuccess,
-  getRepositoryCommitsFailure
+  getRepositoryCommitsFailure,
+  searchCommitSuccess,
+  searchCommitFailure
 } from '../actions/repository'
 
 function* asyncGetRepositoryCommits(action) {
@@ -15,7 +18,8 @@ function* asyncGetRepositoryCommits(action) {
       getRepositoryCommits,
       action.payload.login,
       action.payload.repository,
-      action.payload.page);
+      action.payload.page
+    );
     yield put(getRepositoryCommitsSuccess(response));
   } catch (err) {
     console.log(err);
@@ -23,6 +27,22 @@ function* asyncGetRepositoryCommits(action) {
   }
 }
 
+function* asyncSearchCommit(action) {
+  try {
+    const response = yield call(
+      searchCommit,
+      action.payload.login,
+      action.payload.repository,
+      action.payload.commit
+    );
+    yield put(searchCommitSuccess(response));
+  } catch (err) {
+    console.log(err);
+    yield put(searchCommitFailure(err));
+  }
+}
+
 export {
-  asyncGetRepositoryCommits
+  asyncGetRepositoryCommits,
+  asyncSearchCommit
 }

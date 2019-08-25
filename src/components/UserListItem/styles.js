@@ -20,6 +20,7 @@ const ContentWrapper = styled.div`
 
 const Title = styled.h3`
   font-size: ${Typo.medium};
+  font-weight: normal;
 `;
 
 const Image = styled.img`
