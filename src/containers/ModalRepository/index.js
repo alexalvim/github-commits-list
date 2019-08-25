@@ -47,6 +47,7 @@ class ModalRepository extends React.Component {
     const { closeModal, clearRepository } = this.props;
     this.setState({
       commitSearchField: '',
+      showClearFilter: false
     })
     clearRepository();
     closeModal()

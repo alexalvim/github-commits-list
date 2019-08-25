@@ -9,7 +9,7 @@ import UserBox from '../../components/UserBox';
 import ContentBox from '../../components/ContentBox';
 import SimpleItem from '../../components/SimpleItem';
 import ModalError from '../../components/ModalError';
-import { searchUserRequest, getUserRepositoriesRequest } from '../../actions/user';
+import { getUserRepositoriesRequest } from '../../actions/user';
 import { getRepositoryCommitsRequest } from '../../actions/repository';
 import { clearErrorMessage } from '../../actions/common';
 import {
@@ -24,8 +24,6 @@ class UserPage extends React.Component {
     super(props);
     this.state = {
       openRepositoryModal: false,
-      commitSearchField: '',
-      showClearFilter: false
     }
   }
 
@@ -39,7 +37,6 @@ class UserPage extends React.Component {
     getRepositoryCommitsRequest(user.login, repositoryName, 1)
     this.setState({
       openRepositoryModal: true,
-      showClearFilter: false
     })
   }
 
@@ -120,7 +117,6 @@ const mapStateToProps = store => ({
 
 const mapDispatchToProps = dispatch =>
   bindActionCreators({
-    searchUserRequest,
     getUserRepositoriesRequest,
     getRepositoryCommitsRequest,
     clearErrorMessage
