@@ -19,7 +19,6 @@ function* asyncSearchUser(action) {
     const response = yield call(searchUser, action.payload);
     yield put(searchUserSuccess(response));
   } catch (err) {
-    console.log(err);
     yield put(searchUserFailure(err));
   }
 }
@@ -29,17 +28,15 @@ function* asyncGetUser(action) {
     const response = yield call(getUser, action.payload);
     yield put(getUserSuccess(response));
   } catch (err) {
-    console.log(err);
     yield put(getUserFailure(err));
   }
 }
 
-function* asyncUserRepositories(action) {
+function* asyncGetUserRepositories(action) {
   try {
     const response = yield call(getUserRepositories, action.payload.login, action.payload.page);
     yield put(getUserRepositoriesSuccess(response));
   } catch (err) {
-    console.log(err);
     yield put(getUserRepositoriesFailure(err));
   }
 }
@@ -47,5 +44,5 @@ function* asyncUserRepositories(action) {
 export {
   asyncSearchUser,
   asyncGetUser,
-  asyncUserRepositories
+  asyncGetUserRepositories
 }

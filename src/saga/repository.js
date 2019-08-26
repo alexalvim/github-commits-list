@@ -22,7 +22,6 @@ function* asyncGetRepositoryCommits(action) {
     );
     yield put(getRepositoryCommitsSuccess(response));
   } catch (err) {
-    console.log(err);
     yield put(getRepositoryCommitsFailure(err));
   }
 }
@@ -37,7 +36,6 @@ function* asyncSearchCommit(action) {
     );
     yield put(searchCommitSuccess(response));
   } catch (err) {
-    console.log(err);
     yield put(searchCommitFailure(err));
   }
 }
