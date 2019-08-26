@@ -19,7 +19,7 @@ import {
   contentBoxWrapperStyle,
 } from './styles';
 
-class UserPage extends React.Component {
+export class UserPage extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
