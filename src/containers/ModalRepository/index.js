@@ -22,7 +22,7 @@ import {
   clearFilterButtonStyle
 } from './styles';
 
-class ModalRepository extends React.Component {
+export class ModalRepository extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
