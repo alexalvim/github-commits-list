@@ -1,0 +1,5 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Testing IconButton should render correctly 1`] = `ShallowWrapper {}`;
+
+exports[`Testing UserBox should render correctly 1`] = `ShallowWrapper {}`;
