@@ -11,7 +11,7 @@ import {
 
 import { COMMITS_PER_PAGE } from '../api/github'
 
-const initialState = {
+export const initialState = {
   name: '',
   commits: [] ,
   commitsPage: 1,

@@ -23,60 +23,60 @@ describe('Repository actions', () => {
     const login = 'loginTest'
     const repository = 'repositoryTest';
     const page = 1;
-    const mockedPayload = { login, repository, page }
+    const payload = { login, repository, page }
     const expectedAction = {
       type: GET_REPOSITORY_COMMITS_REQUEST,
-      payload: mockedPayload
+      payload
     }
     expect(getRepositoryCommitsRequest(login, repository, page)).toEqual(expectedAction);
   });
 
   it('should create an action to get repository commits success', () => {
-    const mockedPayload = { list: ['commits'] }
+    const payload = { list: ['commits'] }
     const expectedAction = {
       type: GET_REPOSITORY_COMMITS_SUCCESS,
-      payload: mockedPayload
+      payload
     }
-    expect(getRepositoryCommitsSuccess(mockedPayload)).toEqual(expectedAction);
+    expect(getRepositoryCommitsSuccess(payload)).toEqual(expectedAction);
   });
 
   it('should create an action to get repository commits failure', () => {
-    const mockedPayload = { error: 'error' }
+    const payload = { error: 'error' }
     const expectedAction = {
       type: GET_REPOSITORY_COMMITS_FAILURE,
-      payload: mockedPayload
+      payload
     }
-    expect(getRepositoryCommitsFailure(mockedPayload)).toEqual(expectedAction);
+    expect(getRepositoryCommitsFailure(payload)).toEqual(expectedAction);
   });
 
   it('should create an action to search commit request', () => {
     const login = 'loginTest'
     const repository = 'repositoryTest';
     const term = 'termTest';
-    const mockedPayload = { login, repository, term }
+    const payload = { login, repository, term }
     const expectedAction = {
       type: SEARCH_COMMIT_REQUEST,
-      payload: mockedPayload
+      payload
     }
     expect(searchCommitRequest(login, repository, term)).toEqual(expectedAction);
   });
 
   it('should create an action to search commit success', () => {
-    const mockedPayload = { list: [] }
+    const payload = { list: [] }
     const expectedAction = {
       type: SEARCH_COMMIT_SUCCESS,
-      payload: mockedPayload
+      payload
     }
-    expect(searchCommitSuccess(mockedPayload)).toEqual(expectedAction);
+    expect(searchCommitSuccess(payload)).toEqual(expectedAction);
   });
 
   it('should create an action to search commit failure', () => {
-    const mockedPayload = { error: 'error' }
+    const payload = { error: 'error' }
     const expectedAction = {
       type: SEARCH_COMMIT_FAILURE,
-      payload: mockedPayload
+      payload
     }
-    expect(searchCommitFailure(mockedPayload)).toEqual(expectedAction);
+    expect(searchCommitFailure(payload)).toEqual(expectedAction);
   });
 
   it('should create an action to clear repository', () => {

@@ -24,86 +24,86 @@ import {
 
 describe('User actions', () => {
   it('should create an action to search user request', () => {
-    const mockedPayload = { login: 'test' }
+    const payload = { login: 'test' }
     const expectedAction = {
       type: SEARCH_USER_REQUEST,
-      payload: mockedPayload
+      payload
     }
-    expect(searchUserRequest(mockedPayload)).toEqual(expectedAction);
+    expect(searchUserRequest(payload)).toEqual(expectedAction);
   });
 
   it('should create an action to search user success', () => {
-    const mockedPayload = { list: ['user'] }
+    const payload = { list: ['user'] }
     const expectedAction = {
       type: SEARCH_USER_SUCCESS,
-      payload: mockedPayload
+      payload
     }
-    expect(searchUserSuccess(mockedPayload)).toEqual(expectedAction);
+    expect(searchUserSuccess(payload)).toEqual(expectedAction);
   });
 
   it('should create an action to search user failure', () => {
-    const mockedPayload = { error: 'error' }
+    const payload = { error: 'error' }
     const expectedAction = {
       type: SEARCH_USER_FAILURE,
-      payload: mockedPayload
+      payload
     }
-    expect(searchUserFailure(mockedPayload)).toEqual(expectedAction);
+    expect(searchUserFailure(payload)).toEqual(expectedAction);
   });
 
   it('should create an action to get user request', () => {
-    const mockedPayload = { login: 'test' }
+    const payload = { login: 'test' }
     const expectedAction = {
       type: GET_USER_REQUEST,
-      payload: mockedPayload
+      payload
     }
-    expect(getUserRequest(mockedPayload)).toEqual(expectedAction);
+    expect(getUserRequest(payload)).toEqual(expectedAction);
   });
 
   it('should create an action to get user success', () => {
-    const mockedPayload = { login: 'test' }
+    const payload = { login: 'test' }
     const expectedAction = {
       type: GET_USER_SUCCESS,
-      payload: mockedPayload
+      payload
     }
-    expect(getUserSuccess(mockedPayload)).toEqual(expectedAction);
+    expect(getUserSuccess(payload)).toEqual(expectedAction);
   });
 
   it('should create an action to get user failure', () => {
-    const mockedPayload = { error: 'test' }
+    const payload = { error: 'test' }
     const expectedAction = {
       type: GET_USER_FAILURE,
-      payload: mockedPayload
+      payload
     }
-    expect(getUserFailure(mockedPayload)).toEqual(expectedAction);
+    expect(getUserFailure(payload)).toEqual(expectedAction);
   });
 
   it('should create an action to get user repositories request', () => {
     const login = 'loginTest';
     const avatarUrl = 'avatarTest';
     const page = 1;
-    const mockedPayload = { login, avatarUrl, page }
+    const payload = { login, avatarUrl, page }
     const expectedAction = {
       type: GET_USER_REPOSITORIES_REQUEST,
-      payload: mockedPayload
+      payload
     }
     expect(getUserRepositoriesRequest(login, avatarUrl, page)).toEqual(expectedAction);
   });
 
   it('should create an action to get user repositories success', () => {
-    const mockedPayload = { list: ['test'] }
+    const payload = { list: ['test'] }
     const expectedAction = {
       type: GET_USER_REPOSITORIES_SUCCESS,
-      payload: mockedPayload
+      payload
     }
-    expect(getUserRepositoriesSuccess(mockedPayload)).toEqual(expectedAction);
+    expect(getUserRepositoriesSuccess(payload)).toEqual(expectedAction);
   });
 
   it('should create an action to get user repositories failure', () => {
-    const mockedPayload = { error: 'test' }
+    const payload = { error: 'test' }
     const expectedAction = {
       type: GET_USER_REPOSITORIES_FAILURE,
-      payload: mockedPayload
+      payload
     }
-    expect(getUserRepositoriesFailure(mockedPayload)).toEqual(expectedAction);
+    expect(getUserRepositoriesFailure(payload)).toEqual(expectedAction);
   });
 })

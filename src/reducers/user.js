@@ -11,7 +11,7 @@ import {
   CLEAR_ERROR_MESSAGE
 } from '../actions/actionTypes';
 
-const initialState = {
+export const initialState = {
   searchedUsers: [],
   login: '',
   avatarUrl: '',
