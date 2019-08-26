@@ -1,7 +1,9 @@
 import React from 'react';
-import { shallow } from 'enzyme';
+import { shallow, mount } from 'enzyme';
+import 'jest-styled-components'
 
 import ContentBox from '../../components/ContentBox';
+import { ContentWrapper } from '../../components/ContentBox/styles';
 
 describe('Testing ContentBox', () => {
   it('should render correctly', () => {
@@ -24,5 +26,11 @@ describe('Testing ContentBox', () => {
     );
 
     expect(wrapper.find('#children').length).toEqual(1);
+  })
+
+  it('should render correctly with children', () => {
+    const wrapper = mount(<ContentBox title='test' wrapperStyles='background: blue;'/>);
+
+    expect(wrapper.find(ContentWrapper)).toHaveStyleRule('background', 'blue')
   })
 });

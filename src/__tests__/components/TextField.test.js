@@ -1,7 +1,9 @@
 import React from 'react';
 import { shallow, mount } from 'enzyme';
+import 'jest-styled-components'
 
 import TextField from '../../components/TextField';
+import { Input } from '../../components/TextField/styles';
 
 describe('Testing TextField', () => {
   it('should render correctly', () => {
@@ -17,4 +19,10 @@ describe('Testing TextField', () => {
     wrapper.simulate('change', {target: {value: 'a'}});
     expect(mockFunction).toHaveBeenCalled();    
   }) 
+
+ it('verify if the wrapperStyle passed works in Input', () => {
+    const wrapper = mount(<TextField value='' onChange={() => ({})} wrapperStyle='background: red;' />);
+
+    expect(wrapper.find(Input)).toHaveStyleRule('background', 'red')
+  })
 });

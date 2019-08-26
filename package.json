@@ -82,6 +82,7 @@
   "devDependencies": {
     "enzyme": "^3.10.0",
     "enzyme-adapter-react-16": "^1.14.0",
+    "jest-styled-components": "^6.3.3",
     "react-autocomplete": "^1.8.1",
     "react-icons": "^3.7.0",
     "react-infinite-scroll-component": "^4.5.3",
